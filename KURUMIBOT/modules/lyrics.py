@@ -21,8 +21,7 @@ def lyrics(update: Update, context: CallbackContext):
         msg.reply_text("You haven't specified which song to look for!")
         return
     else:
-        song = Song.find_song(query)
-        if song:
+        if song := Song.find_song(query):
             if song.lyrics:
                 reply = song.format()
             else:
